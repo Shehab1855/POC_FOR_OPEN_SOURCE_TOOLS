@@ -1,0 +1,31 @@
+# OS & Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env & Secrets
+.env
+.env.*
+
+# Docker volumes & data
+**/data/
+**/logs/
+**/tmp/
+
+# Airbyte
+airbyte_local/
+airbyte_workspace/
+
+# MinIO
+minio-data/
+
+# Dremio
+dremio-data/
+
+# Nessie
+nessie-data/
+
+# OpenMetadata
+openmetadata_data/
+elasticsearch-data/
