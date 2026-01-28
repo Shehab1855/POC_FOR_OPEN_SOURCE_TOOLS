@@ -1,11 +1,13 @@
+version: "3.9"
+
 services:
   minio:
     image: minio/minio:latest
     container_name: minio
     command: server /data --console-address ":9001"
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - "9000:9000"   # API
+      - "9001:9001"   # Console UI
     environment:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
@@ -16,8 +18,11 @@ services:
     image: dremio/dremio-oss:latest
     container_name: dremio
     ports:
-      - "9047:9047"
-      - "31010:31010"
+      - "9047:9047"   # Web UI
+      - "31010:31010" # JDBC/ODBC
+      - "45678:45678"
+    depends_on:
+      - minio
     volumes:
       - dremio_data:/opt/dremio/data
 
